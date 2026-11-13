@@ -1,0 +1,177 @@
+/* Tokens and base rules. The colour tokens are the app's own (src/index.css in
+   our-next-chapter), so the landing page and the product stay in step.
+   A subtree picks its theme with .theme-light / .theme-dark. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root,
+.theme-light {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: #f4f3fa;
+  --surface: #ffffff;
+  --surface-sunken: #fafafd;
+  --line: #eceaf4;
+  --line-soft: #f0eff6;
+  --field-line: #e1dfee;
+  --seg-bg: #ecebf4;
+
+  /* Text */
+  --text: #1c1b2e;
+  --text-2: #4a485e;
+  --muted: #5e5c72;
+
+  /* Brand */
+  --accent: #5b5bd6;
+  --accent-strong: #3b3ba8;
+  --accent-soft: #eeedfc;
+  --sage: #3e7a57;
+  --sage-strong: #2d6044;
+  --sage-soft: #e3f3ec;
+  --amber: #9a5b13;
+  --amber-soft: #fdf1e2;
+  --teal: #1d7a73;
+  --teal-soft: #e0f3f1;
+  --sky: #2f6fb5;
+  --sky-soft: #e7f0fa;
+  --peach: #b4532f;
+  --alert: #e0603c;
+  --rose: #b0457a;
+  --rose-soft: #f8e9f1;
+  --owner-bg: #e4e2fb;
+  --partner-bg: #ddeee3;
+  --on-fill: #ffffff;
+  --card-shadow: 0 28px 56px rgba(28, 27, 46, 0.13);
+
+  color: var(--text);
+}
+
+.theme-dark {
+  color-scheme: dark;
+
+  --bg: #13121d;
+  --surface: #1c1b2a;
+  --surface-sunken: #181724;
+  --line: #2b293d;
+  --line-soft: #252336;
+  --field-line: #34324a;
+  --seg-bg: #232134;
+
+  --text: #edecf7;
+  --text-2: #c9c7dc;
+  --muted: #a7a5bc;
+
+  --accent: #8f8ff2;
+  --accent-strong: #b9b9ff;
+  --accent-soft: #2a2950;
+  --sage: #6cc08f;
+  --sage-strong: #95d8b0;
+  --sage-soft: #1d3327;
+  --amber: #e8b46a;
+  --amber-soft: #352917;
+  --teal: #6fcfc5;
+  --teal-soft: #17302e;
+  --sky: #8ab8ec;
+  --sky-soft: #1c2b3d;
+  --peach: #f0a07f;
+  --alert: #f07a58;
+  --rose: #ff8fb8;
+  --rose-soft: #3a2030;
+  --owner-bg: #2f2d5c;
+  --partner-bg: #1f3a2b;
+  --on-fill: #15142a;
+  --card-shadow: 0 28px 56px rgba(0, 0, 0, 0.4);
+
+  color: var(--text);
+}
+
+:root {
+  /* The logo's heart gradient: display type and the glows */
+  --heart-violet: #a78bfa;
+  --heart-rose: #ff7a9c;
+  --heart-amber: #ffb057;
+
+  /* Chart palette (the app's, for the budget bars) */
+  --viz-1: #2a78d6;
+  --viz-2: #eb6834;
+  --viz-3: #1baf7a;
+
+  /* Shape & motion */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.3, 1.8, 0.5, 1);
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+
+  /* Lets <details> animate to its natural height */
+  interpolate-size: allow-keywords;
+
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #13121d; /* the dark ends of the page; also the overscroll colour */
+}
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+fieldset {
+  border: none;
+  min-width: 0;
+}
+img,
+svg {
+  display: block;
+  flex: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Honour "Reduce motion": no ambient loops, no scroll effects, no transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
